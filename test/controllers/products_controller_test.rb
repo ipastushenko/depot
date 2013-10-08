@@ -14,6 +14,8 @@ class ProductsControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
     assert_response :success
+    assert_select 'h1', 'Listing products'
+    assert_select '#main a', 'New Product'
     assert_not_nil assigns(:products)
   end
 
