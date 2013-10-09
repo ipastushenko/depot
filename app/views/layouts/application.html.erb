@@ -8,13 +8,14 @@
 </head>
 <body class="<%= controller.controller_name %>">
   <div id="banner">
-    <%= image_tag("logo.png") %>
-    <%= @page_title || "Pragmatic Bookshelf" %>
   </div>
   <div id="columns">
     <div id="side">
       <div id="time">
-        <%= Time.now.strftime "%Y-%m-%d %H:%M:%S" %>
+        <%= Time.now.strftime "%Y-%m-%d %H:%M:%S" %><br />
+        <% if session[:counter] > 5 %>
+          <%= pluralize session[:counter], 'time' %>
+        <% end %>
       </div>
       <ul>
         <li><a href="/">Home</a></li>

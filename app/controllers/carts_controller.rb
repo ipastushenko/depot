@@ -4,6 +4,7 @@ class CartsController < ApplicationController
   # GET /carts
   # GET /carts.json
   def index
+    @count = increment_count
     @carts = Cart.all
   end
 
