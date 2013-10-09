@@ -13,10 +13,13 @@ class ApplicationController < ActionController::Base
       cart
     end
 
+    def counter_to_zero
+      session[:counter] ||= 0
+      session[:counter] = 0
+    end
+
     def increment_count
-      if session[:counter].nil?
-        session[:counter] = 0
-      end
+      session[:counter] ||= 0
       session[:counter] += 1
     end
 end
