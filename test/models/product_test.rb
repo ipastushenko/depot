@@ -77,4 +77,16 @@ class ProductTest < ActiveSupport::TestCase
     assert product.invalid?
     assert_equal [I18n.translate('errors.messages.taken')], product.errors[:title]
   end
+
+  test "product a unique image_url" do
+    product = Product.new(
+      title: products(:ruby).title,
+      description: "yyy",
+      price: 1,
+      image_url: products(:ruby).image_url
+    )
+
+    assert !product.save
+    assert_equal ["has already been taken"], product.errors[:image_url]
+  end
 end
